@@ -35,10 +35,10 @@ export const items = [
         <ShoppingBagIcon />
       </SvgIcon>
     )
-  },
+  }, 
   {
     title: 'Inventario',
-    path: '/inventario',
+    path: '/inventory',
     icon: (
       <SvgIcon fontSize="small">
         <ShoppingBagIcon />
