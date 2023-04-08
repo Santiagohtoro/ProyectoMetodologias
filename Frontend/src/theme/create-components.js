@@ -6,6 +6,7 @@ import {
   paperClasses,
   tableCellClasses
 } from '@mui/material';
+import { lineHeight, textAlign } from '@mui/system';
 
 // Used only to create transitions
 const muiTheme = createTheme();
@@ -122,7 +123,104 @@ export function createComponents(config) {
           top: 0,
           width: '100%',
           zIndex: 2000
-        }
+        },
+        //Controles de Pop Up
+        '.openPopUp' : {
+          padding: '10px 10px',
+	        lineHeight: '10px',
+	        border: 'none',
+	        color: '#fff',
+	        background: '#5E7DE3',
+	        borderRadius: '5px',
+	        fontSize: '1em',
+	        cursor: 'pointer',
+	        transition: '.3s ease all',
+          textAlign: 'center'
+        },
+        '.overlay' : {
+          background: 'rgba(0,0,0,.3)',
+	        position: 'fixed',
+	        top: 0,
+	        bottom: 0,
+          right: 0,
+          alignItems: 'center',
+          left: 0,
+          display:'flex',
+          justifyContent: 'center',
+          zIndex: '1',
+          visibility: 'hidden',
+        },
+        '.overlay.active' : {
+          visibility: 'visible',
+        },
+        '.popUp' : {
+          background: '#F8F8F8',
+	        boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.3)',
+	        borderRadius: '3px',
+	        fontFamily: 'Montserrat, sans-serif',
+	        padding: '20px',
+	        width: '600px',
+	        transition: '.3s ease all',
+	        transform: 'scale(0.7)',
+	        opacity: 0,
+        },
+        '.popUp' : {
+          fontSize: '16px',
+	        lineHeight: '16px',
+	        display: 'block',
+	        textAlign: 'right',
+	        transition: '.3s ease all',
+	        color: '#BBBBBB',
+        },
+        '.closePopUp' : {
+          fontSize: '16px',
+	        lineHeight: '16px',
+	        display: 'block',
+	        textAlign: 'right',
+	        transition: '.3s ease all',
+	        color: '#BBBBBB',
+        },
+        '.BtnExit' : {
+          padding: '10px 10px',
+	        lineHeight: '10px',
+	        border: 'none',
+	        color: '#fff',
+	        background: '#5E7DE3',
+	        borderRadius: '5px',
+	        fontSize: '1em',
+	        cursor: 'pointer',
+	        transition: '.3s ease all',
+          textAlign: 'center'
+        },
+        //animaciones
+        '.popUp' : {
+          transform: 'scale(1)',
+          opacity: '1',
+        },
+        '@keyframes entradaTitulo':{
+          from : {
+            opacity: 0,
+            transform: 'translateY(-25px)',
+          },
+          to : {
+            transform: 'translateY(0)',
+            opacity: 1,
+          },
+        },
+        '@keyframes entradaSubtitulo' : {
+          from : {
+            opacity: 0,
+            transform: 'translateY(25px)',
+          },
+          to : {
+            transform:'translateY(0)',
+            opacity: 1,
+          },
+        },
+        '@keyframes entradaInputs' : {
+          from : { opacity: 0 },
+          to : { opacity: 1},
+        },
       }
     },
     MuiInputBase: {

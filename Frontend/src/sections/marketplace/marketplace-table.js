@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
 import { getInitials } from 'src/utils/get-initials';
+import { PopUpImages } from './marketplace-images'
 
 export const MarketPlaceTable = (props) => {
   const {
@@ -96,9 +97,17 @@ export const MarketPlaceTable = (props) => {
                         spacing={2}
                       >
                         <Typography variant="subtitle2">
-                          {product.name}
+                          <button class="openPopUp" onClick={PopUpImages}>{product.name}</button>
                         </Typography>
                       </Stack>
+                    </TableCell>
+                    <TableCell>
+                      <div class="overlay">
+                        <div class="popUp">
+                          <a href="#" class="closePopUp"><button class="BtnExit">X</button></a>
+                          <img src={product.image}></img>
+                        </div>
+                      </div>
                     </TableCell>
                     <TableCell>
                       {product.reference}
