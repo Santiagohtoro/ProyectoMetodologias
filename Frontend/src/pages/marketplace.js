@@ -16,10 +16,11 @@ const now = new Date();
 const data = [
   {
     id: 'adfassa8f4d89sa',
-    image: '/assets/avatars/avatar-carson-darrin.png',
+    image: '/assets/avatars/Kit de arrastre.jpg',
     reference: 'HK5201',
     code: '428HX132',
     name: 'Kit de arrastre Scorpion',
+    description: 'Kit de arrastre para DUKE 250 y 390 NG, DOMINAR 250 400 UG REVO SCORPION',
     price: '$ 127.800'
   },
   {
@@ -27,6 +28,7 @@ const data = [
     image: '/assets/avatars/avatar-carson-darrin.png',
     reference: 'RS293',
     name: 'Lubricante Repsol Moto Sport SemiSintetico',
+    description: 'Kit de arrastre para DUKE 250 y 390 NG, DOMINAR 250 400 UG REVO SCORPION',
     price: '$ 42.300'
   },
   {

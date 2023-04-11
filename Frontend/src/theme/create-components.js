@@ -6,7 +6,7 @@ import {
   paperClasses,
   tableCellClasses
 } from '@mui/material';
-import { lineHeight, textAlign } from '@mui/system';
+import { color, lineHeight, textAlign } from '@mui/system';
 
 // Used only to create transitions
 const muiTheme = createTheme();
@@ -130,12 +130,16 @@ export function createComponents(config) {
 	        lineHeight: '10px',
 	        border: 'none',
 	        color: '#fff',
-	        background: '#5E7DE3',
+	        background: '#115A14',
 	        borderRadius: '5px',
 	        fontSize: '1em',
 	        cursor: 'pointer',
 	        transition: '.3s ease all',
           textAlign: 'center'
+        },
+        '.openPopUp:hover' : {
+          backgroundColor: '#1B9B21',
+          opacity:'0.9',
         },
         '.overlay' : {
           background: 'rgba(0,0,0,.3)',
@@ -154,7 +158,7 @@ export function createComponents(config) {
           visibility: 'visible',
         },
         '.popUp' : {
-          background: '#F8F8F8',
+          backgroundColor: '#F8F8F8',
 	        boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.3)',
 	        borderRadius: '3px',
 	        fontFamily: 'Montserrat, sans-serif',
@@ -163,14 +167,73 @@ export function createComponents(config) {
 	        transition: '.3s ease all',
 	        transform: 'scale(0.7)',
 	        opacity: 0,
-        },
-        '.popUp' : {
           fontSize: '16px',
 	        lineHeight: '16px',
 	        display: 'block',
 	        textAlign: 'right',
 	        transition: '.3s ease all',
 	        color: '#BBBBBB',
+        },
+        '.informationProduct' : {
+          backgroundColor: '#F8F8F8',
+          width: '600px',
+          borderRadius: '15px',
+        },
+        '.informationProduct h2':{
+          color: '#000000',
+          textAlign: 'center',
+        },
+        '.informationProduct img' : {
+          position: 'relative',
+          height : '250px',
+          borderRadius: '15px',
+          borderStyle: 'solid',
+          borderColor: '#115A14',
+          left: '20px',
+        },
+        '.informationProduct p':{
+          position: 'relative',
+          left: '15px',
+          color : '#08270A',
+        },
+        //Estilo Addicion - Resta
+        '.btnMath' : {
+          position: 'relative',
+          left: '25px',
+        },
+        '.subtractPurchase' : {
+          backgroundColor: '#115A14',
+          color: 'white',
+          border: 'none',
+          padding: '7px 12px',
+          borderRadius: '5px',
+        },
+        '.subtractPurchase:hover':{
+          backgroundColor: '#1B9B21',
+          opacity:'0.9',
+        },
+        '.resultPurchase' : {
+          display : 'inline-block',
+          position:'relative',
+          right : '25px',
+          borderRadius: '15px',
+          borderStyle: 'solid',
+          borderColor: '#115A14',
+          padding: '5px 10px',
+        },
+        '.addPurchase' : {
+          display: 'inline-block',
+          position: 'relative',
+          left: '30px',
+          backgroundColor: '#115A14',
+          color: 'white',
+          border: 'none',
+          padding: '7px 12px',
+          borderRadius: '5px',
+        },
+        '.addPurchase:hover':{
+          backgroundColor: '#1B9B21',
+          opacity:'0.9',
         },
         '.closePopUp' : {
           fontSize: '16px',
@@ -185,17 +248,41 @@ export function createComponents(config) {
 	        lineHeight: '10px',
 	        border: 'none',
 	        color: '#fff',
-	        background: '#5E7DE3',
+	        background: '#115A14',
 	        borderRadius: '5px',
 	        fontSize: '1em',
 	        cursor: 'pointer',
 	        transition: '.3s ease all',
           textAlign: 'center'
         },
+        '.BtnExit:hover' : {
+          backgroundColor: '#1B9B21',
+          opacity:'0.9',
+        },
         //animaciones
         '.popUp' : {
           transform: 'scale(1)',
           opacity: '1',
+        },
+        '@keyframes entradaTitulo':{
+          from : {
+            opacity: 0,
+            transform: 'translateY(-25px)',
+          },
+          to : {
+            transform: 'translateY(0)',
+            opacity: 1,
+          },
+        },
+        '@keyframes entradaSubtitulo' : {
+          from : {
+            opacity: 0,
+            transform: 'translateY(25px)',
+          },
+          to : {
+            transform:'translateY(0)',
+            opacity: 1,
+          },
         },
         '@keyframes entradaInputs' : {
           from : { opacity: 0 },
