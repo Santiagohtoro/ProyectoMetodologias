@@ -74,6 +74,16 @@ export const items = [
     )
   },
   {
+    
+    title: 'Seguridad',
+    path: '/Seguridad',
+    icon: (
+      <SvgIcon fontSize="small">
+        <LockClosedIcon />
+      </SvgIcon>
+    )
+  },
+  {
     title: 'Register',
     path: '/auth/register',
     icon: (
@@ -91,4 +101,5 @@ export const items = [
       </SvgIcon>
     )
   }
+  
 ];
