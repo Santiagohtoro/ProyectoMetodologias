@@ -197,26 +197,6 @@ export function createComponents(config) {
           transform: 'scale(1)',
           opacity: '1',
         },
-        '@keyframes entradaTitulo':{
-          from : {
-            opacity: 0,
-            transform: 'translateY(-25px)',
-          },
-          to : {
-            transform: 'translateY(0)',
-            opacity: 1,
-          },
-        },
-        '@keyframes entradaSubtitulo' : {
-          from : {
-            opacity: 0,
-            transform: 'translateY(25px)',
-          },
-          to : {
-            transform:'translateY(0)',
-            opacity: 1,
-          },
-        },
         '@keyframes entradaInputs' : {
           from : { opacity: 0 },
           to : { opacity: 1},
