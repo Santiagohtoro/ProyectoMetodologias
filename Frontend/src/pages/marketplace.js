@@ -10,9 +10,6 @@ import { MarketPlaceTable } from 'src/sections/marketplace/marketplace-table';
 import { ProductSearch } from 'src/sections/marketplace/marketplace-search';
 import { applyPagination } from 'src/utils/apply-pagination';
 
-
-const now = new Date();
-
 const data = [
   {
     id: 'adfassa8f4d89sa',
@@ -25,87 +22,11 @@ const data = [
   },
   {
     id: '5e887ac47eed253091be10cb',
-    image: '/assets/avatars/avatar-carson-darrin.png',
+    image: '/assets/avatars/Repsol Semi sintetico.jpg',
     reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    description: 'Kit de arrastre para DUKE 250 y 390 NG, DOMINAR 250 400 UG REVO SCORPION',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47eed25309be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47eed25391be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac7eed253091be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47eed253091be10b',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47eed25391be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47eed25091be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887a47eed253091be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47d253091be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47eed2530be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e7ac47eed253091be10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
-    price: '$ 42.300'
-  },
-  {
-    id: '5e887ac47eed2530e10cb',
-    avatar: '/assets/avatars/avatar-carson-darrin.png',
-    reference: 'RS293',
-    name: 'Lubricante Repsol Moto Sport SemiSintetico',
+    code: '231AK4705',
+    name: 'Repsol Moto Sport 4T 10W40 Semi Sintético',
+    description: 'Es El Aceite Lubricante De Composición Semisintética Perfecto Para Motores De 4T.Proporciona Una Elevada Estabilidad Térmica Y Su Grado De Viscosidad Facilita El Arranque A Diferentes Temperaturas Ambiente.',
     price: '$ 42.300'
   },
 ];
@@ -179,26 +100,6 @@ const Page = () => {
                   direction="row"
                   spacing={1}
                 >
-                  <Button
-                    color="inherit"
-                    startIcon={(
-                      <SvgIcon fontSize="small">
-                        <ArrowUpOnSquareIcon />
-                      </SvgIcon>
-                    )}
-                  >
-                    Import
-                  </Button>
-                  <Button
-                    color="inherit"
-                    startIcon={(
-                      <SvgIcon fontSize="small">
-                        <ArrowDownOnSquareIcon />
-                      </SvgIcon>
-                    )}
-                  >
-                    Export
-                  </Button>
                 </Stack>
               </Stack>
               <div>

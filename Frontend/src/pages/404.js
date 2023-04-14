@@ -48,15 +48,15 @@ const Page = () => (
             sx={{ mb: 3 }}
             variant="h3"
           >
-            404: The page you are looking for isn’t here
+            404: La pagina que buscas no esta aqui
           </Typography>
           <Typography
             align="center"
             color="text.secondary"
             variant="body1"
           >
-            You either tried some shady route or you came here by mistake.
-            Whichever it is, try using the navigation
+            Probaste alguna ruta sospechosa o viniste aquí por error.
+            Sin importar el caso que sea, intenta usar la navegación.
           </Typography>
           <Button
             component={NextLink}
@@ -69,7 +69,7 @@ const Page = () => (
             sx={{ mt: 3 }}
             variant="contained"
           >
-            Go back to dashboard
+            Volver al Panel
           </Button>
         </Box>
       </Container>

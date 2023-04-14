@@ -16,7 +16,6 @@ import {
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
 import { getInitials } from 'src/utils/get-initials';
-import { MathFunction, PopUpImages } from './marketplace-fuctions'
 
 export const MarketPlaceTable = (props) => {
   const {
@@ -60,6 +59,12 @@ export const MarketPlaceTable = (props) => {
                   Nombre
                 </TableCell>
                 <TableCell>
+                  Descripción
+                </TableCell>
+                <TableCell>
+                  Imagen
+                </TableCell>
+                <TableCell>
                   Referencia
                 </TableCell>
                 <TableCell>
@@ -97,27 +102,15 @@ export const MarketPlaceTable = (props) => {
                         spacing={2}
                       >
                         <Typography variant="subtitle2">
-                          <button class="openPopUp" onClick={PopUpImages}>{product.name}</button>
+                          <p className="productName" >{product.name}</p>
                         </Typography>
                       </Stack>
-                      <div class="overlay">
-                        <div class="popUp">
-                          <a class="closePopUp"><button class="BtnExit">X</button></a>
-                          <div class="informationProduct">
-                            <h2>{product.name}</h2>
-                            <img src={product.image}></img>
-                            <p>{product.description}</p>
-                            <div class="btnMath">
-                              <button class="subtractPurchase" onClick={MathFunction}>-</button>
-                              <p class="resultPurchase">0</p>
-                              <button class="addPurchase" onClick={MathFunction}>+</button>
-                            </div> 
-                            <div>
-                              <p></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    </TableCell>
+                    <TableCell>
+                    <p className='productDescription'>{product.description}</p>
+                    </TableCell>
+                    <TableCell>
+                    <img className='productImage' src={product.image}></img>
                     </TableCell>
                     <TableCell>
                       {product.reference}
