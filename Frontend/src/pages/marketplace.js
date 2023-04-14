@@ -3,12 +3,14 @@ import Head from 'next/head';
 import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
 import ArrowUpOnSquareIcon from '@heroicons/react/24/solid/ArrowUpOnSquareIcon';
 import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
+import ShoppingBagIcon from '@heroicons/react/24/solid/ShoppingBagIcon';
 import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/material';
 import { useSelection } from 'src/hooks/use-selection';
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { MarketPlaceTable } from 'src/sections/marketplace/marketplace-table';
 import { ProductSearch } from 'src/sections/marketplace/marketplace-search';
 import { applyPagination } from 'src/utils/apply-pagination';
+import { PopUpImages } from '../sections/marketplace/marketplace-fuctions'; 
 
 const data = [
   {
@@ -248,6 +250,20 @@ const Page = () => {
             />
           </Stack>
         </Container>
+      </Box>
+      <Box>
+      <button class="openPopUp" onClick={PopUpImages} >
+          <SvgIcon fontSize="small">
+            <ShoppingBagIcon />
+          </SvgIcon>
+          </button>
+          <div className="overlay">
+              <div className="popUp">
+                <a className="closePopUp"><button class="BtnExit">X</button></a>
+                <h1>Carrito de compras</h1>   
+                <p>Aqui se encontraran todos los productos despues de seleccionar lo que se quiera</p>          
+              </div>
+          </div>
       </Box>
     </>
   );

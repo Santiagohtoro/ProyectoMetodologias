@@ -125,28 +125,107 @@ export function createComponents(config) {
           zIndex: 2000
         },
         '.productName': {
-          width : '200px',
+          width: '200px',
         },
-        '.productDescription' : {
+        '.productDescription': {
           display: 'box',
-          width : '400px',
-          
+          width: '400px',
+
         },
-        '.productImage' : {
-          height : '250px',
+        '.productImage': {
+          height: '250px',
           borderRadius: '15px',
-          borderStyle: 'solid',
-          borderColor: '#115A14',
           left: '20px',
         },
-        '.textCant' : {
+        '.textCant': {
           width: '30%',
-          textAlign:'center',
+          textAlign: 'center',
           borderRadius: '5px',
-          borderStyle:'solid',
-          borderColor:'#115A14',
+          borderStyle: 'solid',
+          borderColor: '#115A14',
           color: 'black',
-          fontWeight : 'bold',
+          fontWeight: 'bold',
+        },
+        //Controles de Pop Up
+        '.openPopUp': {
+          position: 'fixed',
+          bottom: '10%',
+          right: '5%',
+          zIndex: 1,
+          padding: '20px 20px',
+          lineHeight: '10px',
+          border: 'none',
+          color: '#fff',
+          background: '#115A14',
+          borderRadius: '5px',
+          fontSize: '1em',
+          cursor: 'pointer',
+          transition: '.3s ease all',
+          textAlign: 'center',
+        },
+        '.openPopUp:hover' : {
+          backgroundColor: '#1B9B21',
+          opacity:'0.9',
+        },
+        '.overlay': {
+          background: 'rgba(0,0,0,.3)',
+          position: 'fixed',
+          top: '0',
+          bottom: '0',
+          left: '0',
+          right: '0',
+          alignItems: 'center',
+          justifyContent: 'center',
+          display: 'flex',
+          zIndex: '1',
+          visibility: 'hidden',
+        },
+        '.overlay.active': {
+          visibility: 'visible',
+        },
+        '.popUp': {
+          backgroundColor: '#F8F8F8',
+          boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.3)',
+	        borderRadius: '3px',
+	        fontFamily: 'Montserrat, sans-serif',
+          transition: '.3s ease all',
+	        transform: 'scale(0.7)',
+	        opacity: 0,
+          fontSize: '16px',
+	        lineHeight: '16px',
+	        display: 'block',
+	        textAlign: 'center',
+	        transition: '.3s ease all',
+	        color: '#BBBBBB',
+        },
+        '.closePopUp': {
+          fontSize: '16px',
+          lineHeight: '16px',
+          display: 'block',
+          textAlign: 'right',
+          transition: '.3s ease all',
+          color: '#BBBBBB',
+        },
+        '.BtnExit': {
+          padding: '10px 10px',
+          lineHeight: '10px',
+          border: 'none',
+          color: '#fff',
+          background: '#115A14',
+          borderRadius: '5px',
+          fontSize: '1em',
+          cursor: 'pointer',
+          transition: '.3s ease all',
+          textAlign: 'center'
+        },
+        '.BtnExit:hover' : {
+          backgroundColor: '#1B9B21',
+          opacity:'0.9',
+        },
+        //animaciones
+        '.popUp.active': {
+          transform: 'scale(1)',
+          opacity: '1',
         },
       }
     },

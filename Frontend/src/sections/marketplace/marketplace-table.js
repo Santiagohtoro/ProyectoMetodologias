@@ -87,7 +87,7 @@ export const MarketPlaceTable = (props) => {
                     <TableCell>
                     <p className='productDescription'>{product.description}</p>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className='imageContainer'>
                     <img className='productImage' src={product.image}></img>
                     </TableCell>
                     <TableCell>
@@ -97,7 +97,7 @@ export const MarketPlaceTable = (props) => {
                       {product.price}
                     </TableCell>
                     <TableCell>
-                    <input type="number" className='textCant' placeholder='0' />
+                    <input type="number" className='textCant' min={1} placeholder='0' />
                     </TableCell>
                   </TableRow>
                 );
