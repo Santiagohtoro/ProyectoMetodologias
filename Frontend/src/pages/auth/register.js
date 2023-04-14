@@ -7,9 +7,11 @@ import { Box, Button, Link, Stack, TextField, Typography } from '@mui/material';
 import { useAuth } from 'src/hooks/use-auth';
 import { Layout as AuthLayout } from 'src/layouts/auth/layout';
 
+
 const Page = () => {
+
+
   const router = useRouter();
-  const auth = useAuth();
   const formik = useFormik({
     initialValues: {
       userName: '',
@@ -38,8 +40,18 @@ const Page = () => {
         .required('Contraseña requerida')
     }),
     onSubmit: async (values, helpers) => {
-      try {
-        await auth.signUp(values.userName,values.name,values.cc, values.password);
+      let val = {
+        identification: values.cc,
+        name: values.name, 
+        password: values.password,
+        username: values.userName
+      }
+      try { await fetch("http://localhost:8080/auth/signup",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(val)
+            });
         router.push('/');
       } catch (err) {
         helpers.setStatus({ success: false });
@@ -53,7 +65,7 @@ const Page = () => {
     <>
       <Head>
         <title>
-          Register | Devias Kit
+          Registro | Net SysInformation
         </title>
       </Head>
       <Box

@@ -1,193 +1,232 @@
-import { useCallback, useState } from 'react';
 import Head from 'next/head';
-import NextLink from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import {
-  Alert,
-  Box,
-  Button,
-  FormHelperText,
-  Link,
-  Stack,
-  Tab,
-  Tabs,
-  TextField,
-  Typography
-} from '@mui/material';
-import { useAuth } from 'src/hooks/use-auth';
-import { Layout as AuthLayout } from 'src/layouts/auth/layout';
+import { subDays, subHours } from 'date-fns';
+import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
+import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
+import { OverviewBudget } from 'src/sections/overview/overview-budget';
+import { OverviewLatestOrders } from 'src/sections/overview/overview-latest-orders';
+import { OverviewLatestProducts } from 'src/sections/overview/overview-latest-products';
+import { OverviewSales } from 'src/sections/overview/overview-sales';
+import { OverviewTasksProgress } from 'src/sections/overview/overview-tasks-progress';
+import { OverviewTotalCustomers } from 'src/sections/overview/overview-total-customers';
+import { OverviewTotalProfit } from 'src/sections/overview/overview-total-profit';
+import { OverviewTraffic } from 'src/sections/overview/overview-traffic';
 
-const Page = () => {
-  const router = useRouter();
-  const auth = useAuth();
-  const [method, setMethod] = useState('email');
-  const formik = useFormik({
-    initialValues: {
-      email: 'demo@devias.io',
-      password: 'Password123!',
-      submit: null
-    },
-    validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email('Debe ser un correo electrónico válido')
-        .max(255)
-        .required('Correo electrónico obligatorio'),
-      password: Yup
-        .string()
-        .max(255)
-        .required('Se requiere contraseña')
-    }),
-    onSubmit: async (values, helpers) => {
-      try {
-        await auth.signIn(values.email, values.password);
-        router.push('/dashboard');
-      } catch (err) {
-        helpers.setStatus({ success: false });
-        helpers.setErrors({ submit: err.message });
-        helpers.setSubmitting(false);
-      }
-    }
-  });
+const now = new Date();
 
-  const handleMethodChange = useCallback(
-    (event, value) => {
-      setMethod(value);
-    },
-    []
-  );
-
-
-  return (
-    <>
-      <Head>
-        <title>
-          Iniciar Sesion |  Net SysInformation
-        </title>
-      </Head>
-      <Box
-        sx={{
-          backgroundColor: 'background.paper',
-          flex: '1 1 auto',
-          alignItems: 'center',
-          display: 'flex',
-          justifyContent: 'center'
-        }}
-      >
-        <Box
-          sx={{
-            maxWidth: 550,
-            px: 3,
-            py: '100px',
-            width: '100%'
-          }}
+const Page = () => (
+  <>
+    <Head>
+      <title>
+        Dashboard |  Net SysInformation
+      </title>
+    </Head>
+    <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        py: 8
+      }}
+    >
+      <Container maxWidth="xl">
+        <Grid
+          container
+          spacing={3}
         >
-          <div>
-            <Stack
-              spacing={1}
-              sx={{ mb: 3 }}
-            >
-              <Typography variant="h4">
-                Inicia Sesión
-              </Typography>
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
-                No tienes una cuenta aún?
-                &nbsp;
-                <Link
-                  component={NextLink}
-                  href="/auth/register"
-                  underline="hover"
-                  variant="subtitle2"
-                >
-                  Registrate
-                </Link>
-              </Typography>
-            </Stack>
-            <Tabs
-              onChange={handleMethodChange}
-              sx={{ mb: 3 }}
-              value='email'
-            >
-              <Tab
-                label="Correo"
-                value="email"
-              />
-              
-            </Tabs>
-            {method === 'email' && (
-              <form
-                noValidate
-                onSubmit={formik.handleSubmit}
-              >
-                <Stack spacing={3}>
-                  <TextField
-                    error={!!(formik.touched.email && formik.errors.email)}
-                    fullWidth
-                    helperText={formik.touched.email && formik.errors.email}
-                    label="Email Address"
-                    name="email"
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="email"
-                    value={formik.values.email}
-                  />
-                  <TextField
-                    error={!!(formik.touched.password && formik.errors.password)}
-                    fullWidth
-                    helperText={formik.touched.password && formik.errors.password}
-                    label="Password"
-                    name="password"
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="password"
-                    value={formik.values.password}
-                  />
-                </Stack>
-                {formik.errors.submit && (
-                  <Typography
-                    color="error"
-                    sx={{ mt: 3 }}
-                    variant="body2"
-                  >
-                    {formik.errors.submit}
-                  </Typography>
-                )}
-                <Button
-                  fullWidth
-                  size="large"
-                  sx={{ mt: 3 }}
-                  type="submit"
-                  variant="contained"
-                >
-                  Continue
-                </Button>
-                <Alert
-                  color="primary"
-                  severity="info"
-                  sx={{ mt: 3 }}
-                >
-                  <div>
-                    Puedes usar <b>demo@devias.io</b> y contraseña <b>Password123!</b>
-                  </div>
-                </Alert>
-              </form>
-            )}
-          </div>
-        </Box>
-      </Box>
-    </>
-  );
-};
+          <Grid
+            xs={12}
+            sm={6}
+            lg={3}
+          >
+            <OverviewBudget
+              difference={12}
+              positive
+              sx={{ height: '100%' }}
+              value="$24k"
+            />
+          </Grid>
+          <Grid
+            xs={12}
+            sm={6}
+            lg={3}
+          >
+            <OverviewTotalCustomers
+              difference={16}
+              positive={false}
+              sx={{ height: '100%' }}
+              value="1.6k"
+            />
+          </Grid>
+          <Grid
+            xs={12}
+            sm={6}
+            lg={3}
+          >
+            <OverviewTasksProgress
+              sx={{ height: '100%' }}
+              value={75.5}
+            />
+          </Grid>
+          <Grid
+            xs={12}
+            sm={6}
+            lg={3}
+          >
+            <OverviewTotalProfit
+              sx={{ height: '100%' }}
+              value="$15k"
+            />
+          </Grid>
+          <Grid
+            xs={12}
+            lg={8}
+          >
+            <OverviewSales
+              chartSeries={[
+                {
+                  name: 'This year',
+                  data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
+                },
+                {
+                  name: 'Last year',
+                  data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
+                }
+              ]}
+              sx={{ height: '100%' }}
+            />
+          </Grid>
+          <Grid
+            xs={12}
+            md={6}
+            lg={4}
+          >
+            <OverviewTraffic
+              chartSeries={[63, 15, 22]}
+              labels={['Desktop', 'Tablet', 'Phone']}
+              sx={{ height: '100%' }}
+            />
+          </Grid>
+          <Grid
+            xs={12}
+            md={6}
+            lg={4}
+          >
+            <OverviewLatestProducts
+              products={[
+                {
+                  id: '5ece2c077e39da27658aa8a9',
+                  image: '/assets/products/product-1.png',
+                  name: 'Healthcare Erbology',
+                  updatedAt: subHours(now, 6).getTime()
+                },
+                {
+                  id: '5ece2c0d16f70bff2cf86cd8',
+                  image: '/assets/products/product-2.png',
+                  name: 'Makeup Lancome Rouge',
+                  updatedAt: subDays(subHours(now, 8), 2).getTime()
+                },
+                {
+                  id: 'b393ce1b09c1254c3a92c827',
+                  image: '/assets/products/product-5.png',
+                  name: 'Skincare Soja CO',
+                  updatedAt: subDays(subHours(now, 1), 1).getTime()
+                },
+                {
+                  id: 'a6ede15670da63f49f752c89',
+                  image: '/assets/products/product-6.png',
+                  name: 'Makeup Lipstick',
+                  updatedAt: subDays(subHours(now, 3), 3).getTime()
+                },
+                {
+                  id: 'bcad5524fe3a2f8f8620ceda',
+                  image: '/assets/products/product-7.png',
+                  name: 'Healthcare Ritual',
+                  updatedAt: subDays(subHours(now, 5), 6).getTime()
+                }
+              ]}
+              sx={{ height: '100%' }}
+            />
+          </Grid>
+          <Grid
+            xs={12}
+            md={12}
+            lg={8}
+          >
+            <OverviewLatestOrders
+              orders={[
+                {
+                  id: 'f69f88012978187a6c12897f',
+                  ref: 'DEV1049',
+                  amount: 30.5,
+                  customer: {
+                    name: 'Ekaterina Tankova'
+                  },
+                  createdAt: 1555016400000,
+                  status: 'pending'
+                },
+                {
+                  id: '9eaa1c7dd4433f413c308ce2',
+                  ref: 'DEV1048',
+                  amount: 25.1,
+                  customer: {
+                    name: 'Cao Yu'
+                  },
+                  createdAt: 1555016400000,
+                  status: 'delivered'
+                },
+                {
+                  id: '01a5230c811bd04996ce7c13',
+                  ref: 'DEV1047',
+                  amount: 10.99,
+                  customer: {
+                    name: 'Alexa Richardson'
+                  },
+                  createdAt: 1554930000000,
+                  status: 'refunded'
+                },
+                {
+                  id: '1f4e1bd0a87cea23cdb83d18',
+                  ref: 'DEV1046',
+                  amount: 96.43,
+                  customer: {
+                    name: 'Anje Keizer'
+                  },
+                  createdAt: 1554757200000,
+                  status: 'pending'
+                },
+                {
+                  id: '9f974f239d29ede969367103',
+                  ref: 'DEV1045',
+                  amount: 32.54,
+                  customer: {
+                    name: 'Clarke Gillebert'
+                  },
+                  createdAt: 1554670800000,
+                  status: 'delivered'
+                },
+                {
+                  id: 'ffc83c1560ec2f66a1c05596',
+                  ref: 'DEV1044',
+                  amount: 16.76,
+                  customer: {
+                    name: 'Adam Denisov'
+                  },
+                  createdAt: 1554670800000,
+                  status: 'delivered'
+                }
+              ]}
+              sx={{ height: '100%' }}
+            />
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  </>
+);
 
 Page.getLayout = (page) => (
-  <AuthLayout>
+  <DashboardLayout>
     {page}
-  </AuthLayout>
+  </DashboardLayout>
 );
 
 export default Page;

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
+import jwt_decode from "jwt-decode";
 
 const HANDLERS = {
   INITIALIZE: 'INITIALIZE',
@@ -74,20 +75,22 @@ export const AuthProvider = (props) => {
 
     let isAuthenticated = false;
 
-    try {
+    
       isAuthenticated = window.sessionStorage.getItem('authenticated') === 'true';
-    } catch (err) {
-      console.error(err);
-    }
+    
 
     if (isAuthenticated) {
-      const user = {
-        id: '5e86809283e28b96d2d38537',
-        avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser',
-        email: 'anika.visser@devias.io',
-        rol: 'Administradora'
-      };
+      let token = window.sessionStorage.getItem('token')
+      let decoded = jwt_decode(token);
+          const user = {
+              id: decoded?.user_info.id,
+              avatar: '/assets/avatars/avatar-anika-visser.png', 
+              name: decoded?.user_info.name,
+              identification: decoded?.user_info.identification,
+              username: decoded?.user_info.username,
+              rol: decoded?.user_info?.authorities[0].authority
+            };
+      
 
       dispatch({
         type: HANDLERS.INITIALIZE,
@@ -108,57 +111,57 @@ export const AuthProvider = (props) => {
     []
   );
 
-  const skip = () => {
-    try {
-      window.sessionStorage.setItem('authenticated', 'true');
-    } catch (err) {
-      console.error(err);
+  
+
+  const signIn = async (username, password) => {
+    let val = {
+      username: username,
+      password: password
     }
+    
+      const response = await fetch("http://localhost:8080/auth/login",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(val)
+          });
+          
+      
 
+          if (response.ok) {
+            const json = await response.json();
+            let token = json.token;
+            window.sessionStorage.setItem('authenticated', 'true');
+            sessionStorage.setItem("token", JSON.stringify(token));
+          }
+          if (!response.ok) {
+            throw new Error('Por favor revise su usuario y contraseña');
+          }
+    
+
+    let token = window.sessionStorage.getItem('token')
+    let decoded = jwt_decode(token);
     const user = {
-      id: '5e86809283e28b96d2d38537',
-      avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser',
-      email: 'anika.visser@devias.io',
-      rol: 'Administradora'
+              id: decoded?.user_info.id,
+              avatar: '/assets/avatars/avatar-anika-visser.png', 
+              name: decoded?.user_info.name,
+              identification: decoded?.user_info.identification,
+              username: decoded?.user_info.username,
+              rol: decoded?.user_info?.authorities[0].authority
     };
-
     dispatch({
       type: HANDLERS.SIGN_IN,
       payload: user
     });
   };
 
-  const signIn = async (email, password) => {
-    if (email !== 'demo@devias.io' || password !== 'Password123!') {
-      throw new Error('Please check your email and password');
-    }
-
-    try {
-      window.sessionStorage.setItem('authenticated', 'true');
-    } catch (err) {
-      console.error(err);
-    }
-
-    const user = {
-      id: '5e86809283e28b96d2d38537',
-      avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser',
-      email: 'anika.visser@devias.io',
-      rol: 'Administradora'
-    };
-
-    dispatch({
-      type: HANDLERS.SIGN_IN,
-      payload: user
-    });
-  };
-
-  const signUp = async (email, name, password) => {
+  /*const signUp = async (email, name, password) => {
     throw new Error('Sign up is not implemented');
-  };
+  };*/
 
   const signOut = () => {
+    window.sessionStorage.setItem('authenticated', 'false');
+    sessionStorage.removeItem("token");
     dispatch({
       type: HANDLERS.SIGN_OUT
     });
@@ -168,9 +171,7 @@ export const AuthProvider = (props) => {
     <AuthContext.Provider
       value={{
         ...state,
-        skip,
         signIn,
-        signUp,
         signOut,
       }}
     >

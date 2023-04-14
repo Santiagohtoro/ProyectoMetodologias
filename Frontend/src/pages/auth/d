@@ -1,0 +1,27 @@
+let val = {
+        username: values.username,
+        password: values.password
+      }
+      try { 
+        const response = await fetch("http://localhost:8080/auth/login",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(val)
+            });
+            const json = await response.json();
+            let token = json.token;
+            
+            if (response.ok) {
+              //save the user to local storage
+              sessionStorage.setItem("user", JSON.stringify(token));
+              auth.signIn(values.email, values.password);
+              //update the auth context
+              window.sessionStorage.setItem('authenticated',"true")
+              router.push('/')
+            }
+      } catch (err) {
+        helpers.setStatus({ success: false });
+        helpers.setErrors({ submit: err.message });
+        helpers.setSubmitting(false);
+      }

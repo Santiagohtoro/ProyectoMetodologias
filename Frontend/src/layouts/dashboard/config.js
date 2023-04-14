@@ -8,10 +8,72 @@ import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 import { SvgIcon } from '@mui/material';
 
-export const items = [
+export const ADMINISTRADOR_INVENTARIO = [
   {
     title: 'Panel',
-    path: '/dashboard',
+    path: '/',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ChartBarIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Inventario',
+    path: '/inventory',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
+      </SvgIcon>
+    )
+  }
+];
+
+export const ADMINISTRADOR_COMPRAS =[
+  {
+    title: 'Panel',
+    path: '/',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ChartBarIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Inventario',
+    path: '/inventory',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
+      </SvgIcon>
+    )
+  }
+]
+export const ADMINISTRADOR_VENTA =[
+  {
+    title: 'Panel',
+    path: '/',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ChartBarIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Tienda',
+    path: '/marketplace',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
+      </SvgIcon>
+    )
+  }
+]
+
+/*
+{
+    title: 'Panel',
+    path: '/',
     icon: (
       <SvgIcon fontSize="small">
         <ChartBarIcon />
@@ -75,7 +137,7 @@ export const items = [
   {
     
     title: 'Ingreso',
-    path: '/',
+    path: '/auth/login',
     icon: (
       <SvgIcon fontSize="small">
         <LockClosedIcon />
@@ -100,4 +162,4 @@ export const items = [
       </SvgIcon>
     )
   }
-];
+  */
