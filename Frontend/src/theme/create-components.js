@@ -139,6 +139,15 @@ export function createComponents(config) {
           borderColor: '#115A14',
           left: '20px',
         },
+        '.textCant' : {
+          width: '30%',
+          textAlign:'center',
+          borderRadius: '5px',
+          borderStyle:'solid',
+          borderColor:'#115A14',
+          color: 'black',
+          fontWeight : 'bold',
+        },
       }
     },
     MuiInputBase: {

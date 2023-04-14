@@ -42,19 +42,6 @@ export const MarketPlaceTable = (props) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedAll}
-                    indeterminate={selectedSome}
-                    onChange={(event) => {
-                      if (event.target.checked) {
-                        onSelectAll?.();
-                      } else {
-                        onDeselectAll?.();
-                      }
-                    }}
-                  />
-                </TableCell>
                 <TableCell>
                   Nombre
                 </TableCell>
@@ -70,6 +57,9 @@ export const MarketPlaceTable = (props) => {
                 <TableCell>
                   Precio
                 </TableCell>
+                <TableCell>
+                  Cantidad
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -83,18 +73,6 @@ export const MarketPlaceTable = (props) => {
                     key={product.id}
                     selected={isSelected}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={isSelected}
-                        onChange={(event) => {
-                          if (event.target.checked) {
-                            onSelectOne?.(product.id);
-                          } else {
-                            onDeselectOne?.(product.id);
-                          }
-                        }}
-                      />
-                    </TableCell>
                     <TableCell>
                       <Stack
                         alignItems="center"
@@ -117,6 +95,9 @@ export const MarketPlaceTable = (props) => {
                     </TableCell>
                     <TableCell>
                       {product.price}
+                    </TableCell>
+                    <TableCell>
+                    <input type="number" className='textCant' placeholder='0' />
                     </TableCell>
                   </TableRow>
                 );
