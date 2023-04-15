@@ -80,15 +80,15 @@ export const ADMINISTRADOR_VENTA =[
       </SvgIcon>
     )
   },
-  {
-    title: 'Clientes',
-    path: '/customers',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UsersIcon />
-      </SvgIcon>
-    )
-  },
+  // {
+  //   title: 'Clientes',
+  //   path: '/customers',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <UsersIcon />
+  //     </SvgIcon>
+  //   )
+  // },
   {
     title: 'Tienda',
     path: '/marketplace',
