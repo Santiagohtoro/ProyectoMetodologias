@@ -88,6 +88,7 @@ export const AuthProvider = (props) => {
               name: decoded?.user_info.name,
               identification: decoded?.user_info.identification,
               username: decoded?.user_info.username,
+              token: token,
               rol: decoded?.user_info?.authorities[0].authority
             };
       

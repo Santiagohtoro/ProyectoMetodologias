@@ -76,7 +76,7 @@ const Page = () => (
               value="$15k"
             />
           </Grid>
-          <Grid
+          {/*<Grid
             xs={12}
             lg={8}
           >
@@ -93,8 +93,8 @@ const Page = () => (
               ]}
               sx={{ height: '100%' }}
             />
-          </Grid>
-          <Grid
+          </Grid>*/}
+          {/*<Grid
             xs={12}
             md={6}
             lg={4}
@@ -104,7 +104,7 @@ const Page = () => (
               labels={['Desktop', 'Tablet', 'Phone']}
               sx={{ height: '100%' }}
             />
-          </Grid>
+        </Grid>*/}
           <Grid
             xs={12}
             md={6}

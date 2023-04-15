@@ -26,7 +26,16 @@ export const ADMINISTRADOR_INVENTARIO = [
         <ShoppingBagIcon />
       </SvgIcon>
     )
-  }
+  },
+  {
+    title: 'Cuenta',
+    path: '/account',
+    icon: (
+      <SvgIcon fontSize="small">
+        <UserIcon />
+      </SvgIcon>
+    )
+  },
 ];
 
 export const ADMINISTRADOR_COMPRAS =[
@@ -47,7 +56,45 @@ export const ADMINISTRADOR_COMPRAS =[
         <ShoppingBagIcon />
       </SvgIcon>
     )
+  },
+  {
+    title: 'Cuenta',
+    path: '/account',
+    icon: (
+      <SvgIcon fontSize="small">
+        <UserIcon />
+      </SvgIcon>
+    )
+  },
+]
+export const OPERADOR_VENTA =[
+  {
+    title: 'Panel',
+    path: '/',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ChartBarIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Tienda',
+    path: '/marketplace',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
+      </SvgIcon>
+    )
+  }, {
+    title: 'Cuenta',
+    path: '/account',
+    icon: (
+      <SvgIcon fontSize="small">
+        <UserIcon />
+      </SvgIcon>
+    )
   }
+  
 ]
 export const ADMINISTRADOR_VENTA =[
   {
@@ -67,7 +114,34 @@ export const ADMINISTRADOR_VENTA =[
         <ShoppingBagIcon />
       </SvgIcon>
     )
-  }
+  },
+  {
+    title: 'Inventario',
+    path: '/inventory',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Usuarios',
+    path: '/customers',
+      icon: (
+         <SvgIcon fontSize="small">
+         <UsersIcon />
+         </SvgIcon>
+      )
+      },
+      {
+        title: 'Cuenta',
+        path: '/account',
+        icon: (
+          <SvgIcon fontSize="small">
+            <UserIcon />
+          </SvgIcon>
+        )
+      },
 ]
 
 /*

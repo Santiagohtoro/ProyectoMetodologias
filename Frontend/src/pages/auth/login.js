@@ -173,7 +173,7 @@ const Page = () => {
                   sx={{ mt: 3 }}
                 >
                   <div>
-                    Puedes usar <b>demo@devias.io</b> y contraseña <b>Password123!</b>
+                     Nombre de usuario y contraseña
                   </div>
                 </Alert>
               </form>
